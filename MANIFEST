@@ -1,0 +1,15 @@
+Changes
+MANIFEST
+Makefile.PL
+README
+
+lib/Perl/Critic/Bangs.pm
+lib/Perl/Critic/Policy/Bangs/ProhibitVagueNames.pm
+
+t/00-load.t
+t/pod-coverage.t
+t/pod.t
+t/vague.t
+
+t/tlib/PerlCriticTestUtils.pm
+META.yml                                 Module meta-data (added by MakeMaker)
