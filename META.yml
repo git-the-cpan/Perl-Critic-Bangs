@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Perl-Critic-Bangs
-version:             0.01
+version:             0.20
 abstract:            Perl::Critic::Bangs - A collection of policies for Perl::Critic
 license:             unknown
 generated_by:        ExtUtils::MakeMaker version 6.30_01

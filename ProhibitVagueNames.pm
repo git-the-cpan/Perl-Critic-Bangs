@@ -6,8 +6,6 @@ use Perl::Critic::Utils;
 use Perl::Critic::Violation;
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '0.01';
-
 our @DEFAULT_VAGUE_NAMES = qw(
     data
     info
@@ -18,12 +16,12 @@ our @DEFAULT_VAGUE_NAMES = qw(
     temp
 );
 
-sub default_severity { return $SEVERITY_LOW }
+sub default_severity { return $SEVERITY_MEDIUM }
 sub applies_to { return 'PPI::Token::Symbol' }
 
 =head1 NAME
 
-Perl::Critic::Policy::Bangs::ProhibitVagueNames
+Perl::Critic::Policy::Bangs::ProhibitVagueNames - Prohibit vague variable names
 
 =head1 DESCRIPTION
 
@@ -69,11 +67,8 @@ sub new {
 
     # Add to list of vague names
     } elsif ( defined $config{add_names} ) {
-        push( @{$self->{_names}}, split m{ \s+ }mx, $config{names} );
+        push( @{$self->{_names}}, split m{ \s+ }mx, $config{add_names} );
     }
-
-    use Data::Dumper;
-    print Dumper( $self );
 
     return $self;
 }
@@ -82,17 +77,17 @@ sub new {
 sub violates {
     my ( $self, $elem, $doc ) = @_;
 
-    # make $simplename be the variable name with no sigils or namespaces.
+    # make $basename be the variable name with no sigils or namespaces.
     my $canonical = $elem->canonical();
     my $basename = $canonical;
-    $basename =~ s/.*:://g;
+    $basename =~ s/.*:://;
     $basename =~ s/^[\$@%]//;
 
     foreach my $naughty ( @{$self->{'_names'}} ) {
         if ( $basename eq $naughty ) {
             my $sev = $self->get_severity();
-            my $desc = qq(Variable named "$canonical" found.);
-            my $expl = qq(Variable names should be specific, not vague.);
+            my $desc = qq(Variable named "$canonical");
+            my $expl = 'Variable names should be specific, not vague';
             return Perl::Critic::Violation->new( $desc, $expl, $elem, $sev );
         }
     }

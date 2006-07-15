@@ -3,13 +3,22 @@ MANIFEST
 Makefile.PL
 README
 
-lib/Perl/Critic/Bangs.pm
-lib/Perl/Critic/Policy/Bangs/ProhibitVagueNames.pm
-
-t/00-load.t
-t/pod-coverage.t
-t/pod.t
-t/vague.t
+Bangs.pm
+ProhibitCommentedOutCode.pm
+ProhibitFlagComments.pm
+ProhibitNoPlan.pm
+ProhibitNumberedNames.pm
+ProhibitRefProtoOrProto.pm
+ProhibitVagueNames.pm
 
 t/tlib/PerlCriticTestUtils.pm
+
+t/00-load.t
+t/commented-out-code.t
+t/flag-comments.t
+t/no_plan.t
+t/numbered.t
+t/pod.t
+t/refproto.t
+t/vague.t
 META.yml                                 Module meta-data (added by MakeMaker)
