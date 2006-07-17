@@ -55,7 +55,7 @@ sub violates {
     $basename =~ s/.*:://;
     $basename =~ s/^[\$@%]//;
 
-    if ( $basename =~ /\d+$/ ) {
+    if ( $basename =~ /\D+\d+$/ ) {
         my $sev = $self->get_severity();
         my $desc = qq(Variable named "$canonical");
         my $expl = 'Variable names should not be differentiated only by digits';

@@ -19,6 +19,7 @@ COMPLETENESS: {
     my $data3 = 'bar';
     my @obj4 = qw( Moe Larry Curly );
     my %user5 = ();
+    print $1; # This is OK
 END_PERL
 
     my $policy = 'Bangs::ProhibitNumberedNames';
