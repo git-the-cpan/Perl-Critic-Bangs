@@ -3,18 +3,14 @@ package Perl::Critic::Policy::Bangs::ProhibitRefProtoOrProto;
 use strict;
 use warnings;
 use Perl::Critic::Utils;
-use Perl::Critic::Violation;
 use base 'Perl::Critic::Policy';
 
-sub default_severity { return $SEVERITY_HIGH }
-sub applies_to { return 'PPI::Token::Word' }
+our $VERSION = '1.00';
 
-sub new {
-    my ($class, %config) = @_;
-    my $self = bless {}, $class;
-
-    return $self;
-}
+sub supported_parameters { return ()                     }
+sub default_severity     { return $SEVERITY_HIGH         }
+sub default_themes       { return qw( bangs complexity ) }
+sub applies_to           { return 'PPI::Token::Word'     }
 
 
 sub violates {
@@ -37,7 +33,7 @@ sub violates {
                 # here it looks like we have ref $proto || $proto
                 my $desc = q("ref $proto || $proto" construct found); ## no critic
                 my $expl = q(Probably cut-and-pasted example code);
-                return Perl::Critic::Violation->new( $desc, $expl, $elem, $self->get_severity );
+                return $self->violation( $desc, $expl, $elem );
             }
         }
     }
@@ -55,7 +51,11 @@ __END__
 
 =head1 NAME
 
-Perl::Critic::Policy::Bangs::ProhibitRefProtoOrProto
+Perl::Critic::Policy::Bangs::ProhibitRefProtoOrProto - Create a C<clone()> method if you need copies of objects.
+
+=head1 AFFILIATION
+
+This Policy is part of the L<Perl::Critic::Bangs> distribution.
 
 =head1 DESCRIPTION
 
@@ -93,22 +93,25 @@ this:
     }
 
 See also Randal Schwartz's take on it at
-http://www.stonehenge.com/merlyn/UnixReview/col52.html
+L<http://www.stonehenge.com/merlyn/UnixReview/col52.html>.
+
+=head1 CONFIGURATION
+
+This Policy is not configurable except for the standard options.
 
 =head1 AUTHOR
 
 Andrew Moore <amoore@mooresystems.com>
 
-=head1 ACKNOWLEDGEMENTS
+=head1 ACKNOWLEDGMENTS
 
 Adapted from policies by Jeffrey Ryan Thalhammer <thaljef@cpan.org>,
 and work done by Andrew Moore <amoore@mooresystems.com>.
 
 =head1 COPYRIGHT
 
-Copyright 2006 Andy Lester C<< <andy at petdance.com> >>.
-
-reserved.
+Copyright 2006-2008 Andy Lester C<< <andy at petdance.com> >>.  All
+rights reserved.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.  The full text of this license

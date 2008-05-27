@@ -3,37 +3,38 @@ package Perl::Critic::Policy::Bangs::ProhibitFlagComments;
 use strict;
 use warnings;
 use Perl::Critic::Utils;
-use Perl::Critic::Violation;
 use base 'Perl::Critic::Policy';
 
-sub default_severity { return $SEVERITY_LOW }
-sub applies_to { return 'PPI::Token::Comment' }
+our $VERSION = '1.00';
 
-#---------------------------------------------------------------------------
+#----------------------------------------------------------------------------
 
-sub new {
-    my ($class, %config) = @_;
-    my $self = bless {}, $class;
-    $self->{_keywords} = [ qw( XXX FIXME TODO ) ];
-
-    #Set configuration, if defined.
-    if ( defined $config{keywords} ) {
-        $self->{_keywords} = [ split m{ \s+ }mx, $config{keywords} ];
-    }
-
-    return $self;
+sub supported_parameters {
+    return (
+        {
+            name           => 'keywords',
+            description    => 'Words to prohibit in comments.',
+            behavior       => 'string list',
+            default_string => 'XXX FIXME TODO',
+        },
+    );
 }
+
+sub default_severity     { return $SEVERITY_LOW           }
+sub default_themes       { return qw( bangs maintenance ) }
+sub applies_to           { return 'PPI::Token::Comment'   }
+
 
 #---------------------------------------------------------------------------
 
 sub violates {
     my ( $self, $elem, $doc ) = @_;
 
-    foreach my $keyword ( @{$self->{'_keywords'}} ) {
-        if ( index( $elem->content(), $keyword ) ne -1 ) {
+    foreach my $keyword ( keys %{ $self->{'_keywords'} } ) {
+        if ( index( $elem->content(), $keyword ) != -1 ) { ## no critic (ProhibitMagicNumbers)
             my $desc = qq(Flag comment '$keyword' found);
             my $expl = qq(Comments containing "$keyword" typically indicate bugs or problems that the developer knows exist);
-            return Perl::Critic::Violation->new( $desc, $expl, $elem, $self->get_severity );
+            return $self->violation( $desc, $expl, $elem );
         }
     }
     return;
@@ -47,9 +48,15 @@ __END__
 
 =pod
 
+=for stopwords FIXME
+
 =head1 NAME
 
-Perl::Critic::Policy::Bangs::ProhibitFlagComments
+Perl::Critic::Policy::Bangs::ProhibitFlagComments - Don't use XXX, TODO, or FIXME.
+
+=head1 AFFILIATION
+
+This Policy is part of the L<Perl::Critic::Bangs> distribution.
 
 =head1 DESCRIPTION
 
@@ -57,13 +64,11 @@ Programmers often leave comments intended to "flag" themselves to
 problems later. This policy looks for comments containing 'XXX',
 'TODO', or 'FIXME'.
 
-=head1 CONSTRUCTOR
+=head1 CONFIGURATION
 
 By default, this policy only looks for 'XXX', 'TODO', or 'FIXME' in
-comments. To add words, pass them into the constructor as a key-value
-pair, where the key is 'keywords' and the value is a whitespace
-delimited series of keywords.  Or specify them in your
-F<.perlcriticrc> file like this:
+comments. You can override this by specifying a value for C<keywords>
+in your F<.perlcriticrc> file like this:
 
   [Bangs::ProhibitFlagComments]
   keywords = XXX TODO FIXME BUG REVIEW
@@ -72,15 +77,15 @@ F<.perlcriticrc> file like this:
 
 Andrew Moore <amoore@mooresystems.com>
 
-=head1 ACKNOWLEDGEMENTS
+=head1 ACKNOWLEDGMENTS
 
 Adapted from policies by Jeffrey Ryan Thalhammer <thaljef@cpan.org>,
 Based on App::Fluff by Andy Lester, "<andy at petdance.com>"
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006 Andrew Moore <amoore@mooresystems.com>.  All rights
-reserved.
+Copyright (c) 2006-2008 Andy Lester <andy@petdance.com> and Andrew
+Moore <amoore@mooresystems.com>.  All rights reserved.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.  The full text of this license
