@@ -5,7 +5,7 @@ use warnings;
 use Perl::Critic::Utils;
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.00';
+our $VERSION = '1.02';
 
 sub supported_parameters { return ()                             }
 sub default_severity     { return $SEVERITY_LOW                  }
@@ -68,11 +68,15 @@ Based on App::Fluff by Andy Lester, "<andy at petdance.com>"
 
 =head1 COPYRIGHT
 
-Copyright (c) 2006-2008 Andy Lester <andy@petdance.com> and Andrew
-Moore <amoore@mooresystems.com>.  All rights reserved.
+Copyright (c) 2006-2009 Andy Lester <andy@petdance.com> and Andrew
+Moore <amoore@mooresystems.com>
 
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.  The full text of this license
-can be found in the LICENSE file included with this module.
+This library is free software; you can redistribute it and/or modify
+it under the terms of either the GNU Public License v3, or the Artistic
+License 2.0.
+
+    * http://www.gnu.org/copyleft/gpl.html
+
+    * http://www.opensource.org/licenses/artistic-license-2.0.php
 
 =cut

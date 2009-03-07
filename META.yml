@@ -1,15 +1,15 @@
 --- #YAML:1.0
 name:                Perl-Critic-Bangs
-version:             1.00
+version:             1.02
 abstract:            Perl::Critic::Bangs - A collection of policies for Perl::Critic
 license:             perl
-generated_by:        ExtUtils::MakeMaker version 6.36
+author:              
+    - Andy Lester <andy@petdance.com>
+generated_by:        ExtUtils::MakeMaker version 6.44
 distribution_type:   module
 requires:     
     Perl::Critic:                  1.084
     Test::More:                    0
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
-    version: 1.2
-author:
-    - Andy Lester <andy@petdance.com>
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
