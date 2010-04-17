@@ -11,11 +11,11 @@ Perl::Critic::Bangs - A collection of handy Perl::Critic policies
 
 =head1 VERSION
 
-Version 1.02
+Version 1.04
 
 =cut
 
-our $VERSION = '1.02';
+our $VERSION = '1.04';
 
 =head1 SYNOPSIS
 
@@ -56,7 +56,7 @@ variable created with qr() is usually not doing what you expect.
 
 Vague variables like C<$data> or C<$info> are not descriptive enough.
 
-=head1 WHY BANGS?
+=head1 WHY IS IT CALLED Perl::Critic::Bangs?
 
 I didn't want to call it "Perl::Critic::Lester" or "Perl::Critic::Petdance"
 that would make it sound like they were only my rules.  Other people
@@ -106,9 +106,9 @@ L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Perl-Critic-Bangs>
 
 L<http://search.cpan.org/dist/Perl-Critic-Bangs>
 
-=item * Subversion repository
+=item * Source code repository
 
-L<http://perl-critic-bangs.googlecode.com/svn/>
+L<http://github.com/petdance/perl-critic-bangs>
 
 =back
 
@@ -124,17 +124,22 @@ Thanks to
 
 =back
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT & LICENSE
 
-Copyright (C) 2006-2009 Andy Lester
+Copyright 2006-2009 Andy Lester.
 
-This library is free software; you can redistribute it and/or modify
-it under the terms of either the GNU Public License v3, or the Artistic
-License 2.0.
+This program is free software; you can redistribute it and/or modify
+it under the terms of either:
 
-    * http://www.gnu.org/copyleft/gpl.html
+=over 4
 
-    * http://www.opensource.org/licenses/artistic-license-2.0.php
+=item * the GNU General Public License as published by the Free
+Software Foundation; either version 1, or (at your option) any later
+version, or
+
+=item * the Artistic License version 2.0.
+
+=back
 
 =cut
 

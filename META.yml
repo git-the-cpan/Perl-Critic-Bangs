@@ -1,15 +1,27 @@
 --- #YAML:1.0
-name:                Perl-Critic-Bangs
-version:             1.02
-abstract:            Perl::Critic::Bangs - A collection of policies for Perl::Critic
-license:             perl
-author:              
+name:               Perl-Critic-Bangs
+version:            1.04
+abstract:           Perl::Critic::Bangs - A collection of policies for Perl::Critic
+author:
     - Andy Lester <andy@petdance.com>
-generated_by:        ExtUtils::MakeMaker version 6.44
-distribution_type:   module
-requires:     
-    Perl::Critic:                  1.084
-    Test::More:                    0
+license:            perl
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  0
+build_requires:
+    ExtUtils::MakeMaker:  0
+requires:
+    Perl::Critic:        1.098
+    Test::More:          0
+    Test::Perl::Critic:  1.01
+resources:
+    license:     http://dev.perl.org/licenses/
+    repository:  git://github.com/petdance/perl-critic-bangs.git
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.56
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
-    version: 1.3
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4

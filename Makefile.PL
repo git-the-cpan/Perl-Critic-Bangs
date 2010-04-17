@@ -4,21 +4,33 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 
-WriteMakefile(
+my %parms = (
     NAME                => 'Perl::Critic::Bangs',
     AUTHOR              => 'Andy Lester <andy@petdance.com>',
     VERSION_FROM        => 'lib/Perl/Critic/Bangs.pm',
     ABSTRACT            => 'Perl::Critic::Bangs - A collection of policies for Perl::Critic',
     PL_FILES            => {},
     PREREQ_PM => {
-        'Perl::Critic' => 1.084,
-        'Test::More' => 0,
+        'Perl::Critic'       => 1.098,
+        'Test::Perl::Critic' => 1.01,
+        'Test::More'         => 0,
     },
     LICENSE             => 'perl',
 
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Perl-Critic-Bangs-*' },
 );
+
+if ( $ExtUtils::MakeMaker::VERSION ge '6.46' ) {
+    $parms{META_MERGE} = {
+        resources => {
+            license     => 'http://dev.perl.org/licenses/',
+            repository  => 'git://github.com/petdance/perl-critic-bangs.git',
+        }
+    };
+}
+
+WriteMakefile( %parms );
 
 package MY;
 sub MY::libscan {
@@ -48,4 +60,3 @@ critic:
 
 MAKE_FRAG
 }
-
