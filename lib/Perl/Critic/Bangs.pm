@@ -11,11 +11,11 @@ Perl::Critic::Bangs - A collection of handy Perl::Critic policies
 
 =head1 VERSION
 
-Version 1.04
+Version 1.06
 
 =cut
 
-our $VERSION = '1.04';
+our $VERSION = '1.06';
 
 =head1 SYNOPSIS
 
@@ -126,7 +126,7 @@ Thanks to
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2006-2009 Andy Lester.
+Copyright 2006-2010 Andy Lester.
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of either:
