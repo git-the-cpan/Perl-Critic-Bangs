@@ -12,14 +12,13 @@ use English qw( -no_match_vars );
 use File::Spec qw();
 
 use Perl::Critic::PolicyFactory;
-use Perl::Critic::Utils qw{ :characters };
-use Perl::Critic::TestUtilitiesWithMinimalDependencies qw{
+use Perl::Critic::Utils qw( :characters );
+use Perl::Critic::TestUtilitiesWithMinimalDependencies qw(
     should_skip_author_tests
     get_author_test_skip_message
-};
+);
 
 use Test::More;
-use Test::Perl::Critic;
 
 if (should_skip_author_tests()) {
     plan skip_all => get_author_test_skip_message();

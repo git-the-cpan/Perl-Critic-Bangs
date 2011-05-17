@@ -8,7 +8,7 @@ use Readonly;
 use Perl::Critic::Utils qw{ :severities :classification :data_conversion };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.07_01';
+our $VERSION = '1.07_02';
 
 #-----------------------------------------------------------------------------
 
@@ -24,13 +24,14 @@ sub applies_to           { return 'PPI::Token::Operator' }
 
 #-----------------------------------------------------------------------------
 
-my %bitwise_operators = hashify( qw( & | ^ ~ ) );
+my %bitwise_operators = hashify( qw( & | ^ ~ &= |= ^= ) );
 
 sub violates {
     my ( $self, $elem, undef ) = @_;
 
-    if ( $bitwise_operators{$elem->content()} ) {
-        return $self->violation( $DESC, "$EXPL '" . $elem->content() . "'", $elem );
+    my $content = $elem->content();
+    if ( $bitwise_operators{$content} ) {
+        return $self->violation( $DESC, qq{$EXPL "$content"}, $elem );
     }
     return;    #ok!
 }
