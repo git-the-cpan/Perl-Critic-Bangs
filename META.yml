@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Perl-Critic-Bangs
-version:            1.06
+version:            1.07_01
 abstract:           Perl::Critic::Bangs - A collection of policies for Perl::Critic
 author:
     - Andy Lester <andy@petdance.com>
@@ -11,9 +11,19 @@ configure_requires:
 build_requires:
     ExtUtils::MakeMaker:  0
 requires:
-    Perl::Critic:        1.098
-    Test::More:          0
-    Test::Perl::Critic:  1.01
+    Perl::Critic:         1.098
+    Perl::Critic::Policy:  0
+    Perl::Critic::PolicyFactory:  0
+    Perl::Critic::PolicyParameter:  0
+    Perl::Critic::TestUtils:  0
+    Perl::Critic::UserProfile:  0
+    Perl::Critic::Utils:  0
+    Perl::Critic::Violation:  0
+    PPI::Cache:           0
+    PPI::Document:        0
+    Readonly:             0
+    Test::More:           0
+    Test::Perl::Critic:   1.01
 resources:
     license:     http://dev.perl.org/licenses/
     repository:  git://github.com/petdance/perl-critic-bangs.git
