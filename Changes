@@ -1,5 +1,10 @@
 Revision history for Perl-Critic-Bangs
 
+1.08    Mon Jun 20 11:56:49 CDT 2011
+====================================
+Official release, no changes from 1.07_02
+
+
 1.07_02 Tue May 17 11:06:41 CDT 2011
 ====================================
 [ENHANCEMENTS]

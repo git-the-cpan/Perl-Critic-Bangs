@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Perl-Critic-Bangs
-version:            1.07_02
+version:            1.08
 abstract:           Perl::Critic::Bangs - A collection of policies for Perl::Critic
 author:
     - Andy Lester <andy@petdance.com>
