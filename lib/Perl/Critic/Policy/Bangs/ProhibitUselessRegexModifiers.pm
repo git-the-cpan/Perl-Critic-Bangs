@@ -7,7 +7,7 @@ use Readonly;
 use Perl::Critic::Utils qw{ :severities :classification :ppi };
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.10';
+our $VERSION = '1.11_01';
 
 Readonly::Scalar my $DESC => q{Prohibits adding "m" modifier to compiled regular expressions where it does nothing};
 Readonly::Scalar my $EXPL => <<'EOF';
@@ -84,8 +84,7 @@ sub _sorted_modifiers {
 
 1;
 
-=pod
-
+__END__
 =head1 NAME
 
 Perl::Critic::Policy::Bangs::ProhibitUselessRegexModifiers - Adding modifiers to a regular expression made up entirely of a variable created with qr() is usually not doing what you expect.
@@ -134,7 +133,7 @@ Thanks to Andy Lester, "<andy at petdance.com>" for pointing out this common pro
 
 =head1 COPYRIGHT
 
-Copyright (c) 2007-2011 Andy Lester <andy@petdance.com> and Andrew
+Copyright (c) 2007-2013 Andy Lester <andy@petdance.com> and Andrew
 Moore <amoore@mooresystems.com>
 
 This library is free software; you can redistribute it and/or modify it

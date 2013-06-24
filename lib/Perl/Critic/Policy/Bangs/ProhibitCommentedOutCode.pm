@@ -5,7 +5,7 @@ use warnings;
 use Perl::Critic::Utils;
 use base 'Perl::Critic::Policy';
 
-our $VERSION = '1.10';
+our $VERSION = '1.11_01';
 
 #---------------------------------------------------------------------------
 
@@ -28,26 +28,19 @@ sub applies_to           { return 'PPI::Token::Comment'   }
 
 sub violates {
     my ( $self, $elem, $doc ) = @_;
-    my @viols = ();
-
-    my $nodes = $doc->find( 'PPI::Token::Comment' );
 
     if ( $elem =~ $self->{_commentedcoderegex} ) {
         my $desc = q(Code found in comment);
         my $expl = q(Commented-out code found can be confusing);
         return $self->violation( $desc, $expl, $elem );
     }
+
     return;
 }
 
 1;
 
 __END__
-
-#---------------------------------------------------------------------------
-
-=pod
-
 =for stopwords regex
 
 =head1 NAME
@@ -86,7 +79,7 @@ Based on App::Fluff by Andy Lester, "<andy at petdance.com>"
 
 =head1 COPYRIGHT
 
-Copyright (C) 2006-2011 Andy Lester and Andrew Moore
+Copyright (C) 2006-2013 Andy Lester and Andrew Moore
 
 This library is free software; you can redistribute it and/or modify
 it under the terms of the Artistic License 2.0.
